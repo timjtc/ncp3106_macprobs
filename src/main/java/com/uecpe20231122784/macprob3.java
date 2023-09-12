@@ -1,12 +1,64 @@
 package com.uecpe20231122784;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
 public class macprob3 {
+
+    private static void swap(int[] arr, int i, int j)
+    {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+ 
+    // This function takes last element as pivot,
+    // places the pivot element at its correct position
+    // in sorted array, and places all smaller to left
+    // of pivot and all greater elements to right of pivot
+    private static int partition(int[] arr, int low, int high)
+    {
+        // Choosing the pivot
+        int pivot = arr[high];
+ 
+        // Index of smaller element and indicates
+        // the right position of pivot found so far
+        int i = (low - 1);
+ 
+        for (int j = low; j <= high - 1; j++) {
+ 
+            // If current element is smaller than the pivot
+            if (arr[j] < pivot) {
+ 
+                // Increment index of smaller element
+                i++;
+                swap(arr, i, j);
+            }
+        }
+        swap(arr, i + 1, high);
+        return (i + 1);
+    }
+ 
+    // The main function that implements QuickSort
+    // arr[] --> Array to be sorted,
+    // low --> Starting index,
+    // high --> Ending index
+    private static void quickSort(int[] arr, int low, int high)
+    {
+        if (low < high) {
+ 
+            // pi is partitioning index, arr[p]
+            // is now at right place
+            int pi = partition(arr, low, high);
+ 
+            // Separately sort elements before
+            // partition and after partition
+            quickSort(arr, low, pi - 1);
+            quickSort(arr, pi + 1, high);
+        }
+    }
 
     public static void problem1() {
 
@@ -179,6 +231,75 @@ public class macprob3 {
 
     public static void problem4() {
         
+        // Program title and description
+        System.out.println("Integer Comparator");
+        System.out.println("Type in integers to be compared. Input a -99 to indicate end of series.");
+
+        // Initialize values
+        int terminate_signal = -99;
+        int input_stream = 0;
+        int[] array = new int[0];
+        Scanner stdin = new Scanner(System.in);
+
+        // Loop until a terminate signal is received
+        for (int i = 0; input_stream != terminate_signal; i++) {
+            
+            // Take input
+            System.out.print("Integer#" + (i + 1) + " (-99 to stop): ");
+            input_stream = stdin.nextInt();
+
+            // as long as input does not indicate termination (-99),
+            if (input_stream != terminate_signal) {
+
+                // extend array and assign input integer to extended array
+                array = Arrays.copyOf(array, array.length + 1);
+                array[array.length - 1] = input_stream;
+
+            }
+        }
+
+        // Run a quick sort
+        quickSort(array, 0, array.length - 1);
+
+        // Print largest and smallest integer
+        System.out.println("Smallest number: " + array[0]);
+        System.out.println("Highest number: " + array[array.length - 1]);
+
+        // Close resources
+        stdin.close();
+        
+    }
+
+    public static void problem5() {
+        
+        // Program title
+        System.out.println("File Content Line Indexer");
+
+        // Get filename
+        Scanner stdin = new Scanner(System.in);
+        System.out.print("Filename of the file to read: ");
+        String filename_read = stdin.nextLine();
+
+        // Initialize Scanner for reading file
+        try (Scanner in = new Scanner(new File(filename_read))) {
+
+            // Loop until the file has contents
+            for (int i = 1; in.hasNext(); i++) {
+
+                // Print iteration/line number, then the content
+                System.out.println(i + ": " + in.nextLine());
+
+            }
+
+        } catch (FileNotFoundException e) {
+            // If file is not found, return an error
+            System.out.print("ERROR: File to read not found!");
+            System.exit(101);
+        }
+
+        // Close resources
+        stdin.close();
+
     }
 
 }
