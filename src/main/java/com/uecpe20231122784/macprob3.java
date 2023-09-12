@@ -7,13 +7,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class macprob3 {
-    private static String _sp(int n) {
-        String space = "";
-        for (int i = 0; i < n - 1; i++) {
-            space = space + " ";
-        }
-        return space;
-    }
 
     public static void problem1() {
 
@@ -139,50 +132,53 @@ public class macprob3 {
     }
 
     public static void problem3() {
+        
+        // Program title
+        System.out.println("Payroll Calculator");
+
+        // Initialize values
         double penny_value = 0.01;
-        // double initial_salary = 1;
-        
-
+        int days_worked = 0;
         Scanner stdin = new Scanner(System.in);
-        int days_worked = Integer.parseInt(stdin.nextLine());
-        double[] salary_array = new double[days_worked];
-        salary_array[0] = 1.0;
-
-        System.out.printf("--------------------------------%n");
-        System.out.printf("         SALARY DATA            %n");
-        System.out.printf("--------------------------------%n");
-        System.out.printf("| %-4i | %-10d |%n", "Day #", "Salary");
-        System.out.printf("| %-4i | %-10d |%n", "Day #", "Salary");
-        System.out.printf("--------------------------------%n");
-
-        System.out.printf("| %-10s | %-8s | %04d |%n", "Floating", "double",  64);
-        System.out.printf("| %-10s | %-8s | %04d |%n", "Floating", "float",   32);
-        System.out.printf("| %-10s | %-8s | %04d |%n", "Integral", "long",    64);
-        System.out.printf("| %-10s | %-8s | %04d |%n", "Integral", "int",     32);
-        System.out.printf("| %-10s | %-8s | %04d |%n", "Integral", "char",    16);
-        System.out.printf("| %-10s | %-8s | %04d |%n", "Integral", "short",   16);
-        System.out.printf("| %-10s | %-8s | %04d |%n", "Integral", "byte",    8);
-        System.out.printf("| %-10s | %-8s | %04d |%n", "Boolean",  "boolean", 1);
-
-        System.out.printf("--------------------------------%n");
-
-        System.out.println("Salary data:\n|==========|===========|");
-        System.out.println("|  Day #   |  Salary   |");
-        System.out.println("| " + 1 + _sp(6) + "| " + salary_array[0]);
-
-        for (int i = 1; i < days_worked; i++) {
-            salary_array[i] = salary_array[i - 1] * 2;
-            System.out.print("| " + i + _sp(7 - Integer.toString(i).length()) + "| " + salary_array[i] + _sp(7 - Double.toString(salary_array[i]).length()) + "|");
-        }
-
+        boolean input_invalid = true;
         
-        System.out.println("|==========|===========|");
-
-        for (int i = 0; i < salary_array.length; i++) {
-            
+        // Get user input
+        while (input_invalid) {
+            System.out.print("Compute salary for how many days? ");
+            days_worked = Integer.parseInt(stdin.nextLine());
+            // Check if user input is below 1
+            if (days_worked < 1) {
+                // Keep looping if input is invalid
+                input_invalid = true;
+                System.out.println("Please input a number at least 1.");
+            }
+            else {
+                // Set invalid flag to false if input is correct
+                input_invalid = false;
+            }
         }
-        // System.out.println("|==========|==========|");
+        double[] salary_array = new double[days_worked];
 
+        // Print data in a table using formatting
+        System.out.printf("----------------------------%n");
+        System.out.printf("|       SALARY DATA        |%n");
+        System.out.printf("|-------+------------------|%n");
+        System.out.printf("| %-4s |    %-10s    |%n", "Day #", "Salary");
+        System.out.printf("|-------+------------------|%n");
+        // For each day, multiply the value of penny in USD to number of pennies earned per day
+        for (int i = 0; i < days_worked; i++) {
+            salary_array[i] = (i == 0) ? 1.0 : salary_array[i - 1] * 2;
+            System.out.printf("|  %-4s | $%-15s |%n", Integer.toString(i + 1), Double.toString(salary_array[i] * penny_value));
+        }
+        System.out.printf("----------------------------%n");
+
+        // Close resources
+        stdin.close();
+
+    }
+
+    public static void problem4() {
+        
     }
 
 }
