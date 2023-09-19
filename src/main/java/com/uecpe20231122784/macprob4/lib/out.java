@@ -1,6 +1,6 @@
 package com.uecpe20231122784.macprob4.lib;
 
-public class sysoutalias {
+public class out {
     
     public static <PrintableToString> void println(PrintableToString... args) {
         for (PrintableToString pts : args) {

@@ -2,10 +2,12 @@ package com.uecpe20231122784.macprob4.lib;
 
 import java.util.Scanner;
 
-public class stdin_interface {
+public class cli {
+
+    public static Scanner s = new Scanner(System.in);
     
-    public static Object waitForInput(Scanner scanner, String type) {
-        String i = scanner.nextLine();
+    public static Object waitForInput(String type) {
+        String i = s.nextLine();
         switch (type) {
             case "int":
                 return Integer.parseInt(i);
