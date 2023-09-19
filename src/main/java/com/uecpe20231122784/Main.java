@@ -1,9 +1,12 @@
 package com.uecpe20231122784;
 
+import com.uecpe20231122784.macprob4.*;
+
 public class Main {
     public static void main(String[] args) {
         try {
-            macprob3.problem5();
+            macprob4_problem2.main();
+            // println("s");
         } catch (Exception e) {
             e.printStackTrace();
         }
