@@ -9,6 +9,10 @@ public class Coin {
     private Random rand = new Random();
 
     public Coin() {
+        toss();
+    }
+
+    public void toss() {
         rand_int = rand.nextInt(2) + 1;
         if (rand_int == 0) {
             sideUp = "heads";
@@ -21,4 +25,9 @@ public class Coin {
     public int getRandInt() {
         return rand_int;
     }
+
+    public String getSideUp() {
+        return sideUp;
+    }
+
 }
