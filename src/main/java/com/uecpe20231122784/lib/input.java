@@ -2,11 +2,11 @@ package com.uecpe20231122784.lib;
 
 import java.util.Scanner;
 
-public class cli {
+public class input {
 
     public static Scanner s = new Scanner(System.in);
     
-    public static Object waitForInput(String type) {
+    public static Object wait(String type) {
         String i = s.nextLine();
         switch (type) {
             case "int":

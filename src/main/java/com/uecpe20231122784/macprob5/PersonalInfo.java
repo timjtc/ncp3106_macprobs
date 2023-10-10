@@ -1,6 +1,6 @@
 package com.uecpe20231122784.macprob5;
 
-public class PersonalIdentifyingInformation {
+public class PersonalInfo {
     
     private static int counter;
 
@@ -9,7 +9,7 @@ public class PersonalIdentifyingInformation {
     private int age;
     private String phone_number;
 
-    public PersonalIdentifyingInformation(String pii_name, String pii_address, int pii_age, String pii_phone_number) {
+    public PersonalInfo(String pii_name, String pii_address, int pii_age, String pii_phone_number) {
         name = pii_name;
         address = pii_address;
         age = pii_age;
@@ -17,7 +17,7 @@ public class PersonalIdentifyingInformation {
         counter++;
     }
 
-    public PersonalIdentifyingInformation() {
+    public PersonalInfo() {
         name = "";
         address = "";
         age = 0;
@@ -55,6 +55,10 @@ public class PersonalIdentifyingInformation {
 
     public String getPhoneNum() {
         return phone_number;
+    }
+
+    public static int getInstanceCount() {
+        return counter;
     }
 
 }
