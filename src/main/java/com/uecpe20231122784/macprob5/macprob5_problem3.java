@@ -8,12 +8,12 @@ public class macprob5_problem3 {
     public static void main(String[] args) {
         
         // Get user input
-        print.p("Number of scores: ");
+        print.s("Number of scores: ");
         TestScores ts = new TestScores((int) input.wait("int"));
 
         // Get input scores based on defined size
         for(int i = 0; i < ts.getSize(); i++) {
-            print.p("Input score#" + (i + 1) + ": ");
+            print.s("Input score#" + (i + 1) + ": ");
             ts.setScore(i, (double) input.wait("double"));
         }
 

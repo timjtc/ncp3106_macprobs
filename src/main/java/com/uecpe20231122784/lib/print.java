@@ -9,7 +9,7 @@ public class print {
         System.out.println();
     }
 
-    public static <PrintableToString> void p(PrintableToString... args) {
+    public static <PrintableToString> void s(PrintableToString... args) {
         for(PrintableToString pts: args) {
             System.out.print(pts);
         }
