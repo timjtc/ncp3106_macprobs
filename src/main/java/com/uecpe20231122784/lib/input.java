@@ -22,4 +22,8 @@ public class input {
         }
     }
 
+    public static char schar() {
+        return s.next(".").charAt(0);
+    }
+
 }
