@@ -1,5 +1,7 @@
 package com.uecpe20231122784.lib;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class input {
@@ -24,6 +26,20 @@ public class input {
 
     public static char schar() {
         return s.next(".").charAt(0);
+    }
+
+    public static String vstring(String label, String[][] pair_array) {
+        
+        while (true) {
+            System.out.print(label);
+            String i = s.nextLine();
+            for (String[] pair : pair_array) {
+                if (pair[0].contentEquals(i)) {
+                    return pair[1];
+                }
+            }
+        }
+
     }
 
 }
