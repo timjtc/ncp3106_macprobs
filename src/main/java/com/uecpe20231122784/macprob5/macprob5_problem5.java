@@ -18,7 +18,6 @@ public class macprob5_problem5 {
         boolean isInputValid = false;
         char user_input;
 
-        // test = @vstring({{"y", "true"}, {"n", "false"}});
         do {
             // Print round number
             print.ln("Round " + round_counter);
@@ -46,8 +45,8 @@ public class macprob5_problem5 {
                 }
             } while (!isInputValid);
 
-            // print.ln(willPlayerRoll);
             print.ln("--- --- --- --- ---");
+            
         } while (willPlayerRoll);
         
     }
