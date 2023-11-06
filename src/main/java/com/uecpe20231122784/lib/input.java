@@ -1,7 +1,5 @@
 package com.uecpe20231122784.lib;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class input {
