@@ -58,9 +58,11 @@ public class macprob5_problem5 {
                 /*
                 * If hand exceeds 15:
                 *  Generate a random decision that has a 1/6 chance of occuring 
-                *  for computer if it will roll or not
+                *  for computer if it will roll or not.
                 */
+                // Roll d6
                 d6_computer.roll();
+                // If computer rolls 1, roll another time to add to hand
                 if (d6_computer.getValue() < 2) {
                     d6_computer.roll();
                     hand_computer += d6_computer.getValue();
@@ -71,7 +73,7 @@ public class macprob5_problem5 {
                 }
             }
 
-            // Check if computer busts over 21
+            // Check if computer busts
             if (hand_computer > 21) {
                 did_computer_bust = true;
                 print.ln("Computer busts! Player wins!");
@@ -91,7 +93,7 @@ public class macprob5_problem5 {
             // Check if player busts
             if (hand_player > 21) {
                 did_player_bust = true;
-                print.ln("Player busts! Computer Wins!");
+                print.ln("Player busts! Computer wins!");
                 break;
             }
 
