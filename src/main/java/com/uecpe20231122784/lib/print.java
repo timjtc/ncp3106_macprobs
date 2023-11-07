@@ -13,7 +13,6 @@ public class print {
         for(PrintableToString pts: args) {
             System.out.print(pts);
         }
-            
     }
 
     public static <PrintableToString> void f(String format, PrintableToString... args) {
